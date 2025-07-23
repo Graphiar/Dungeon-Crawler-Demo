@@ -1,13 +1,18 @@
 fun main() {
-    //Andrew Pettway Dungeon Crawler 0.2 - July 2025
+    //Andrew Pettway Dungeon Crawler 0.4 - July 2025
     var room: Int = 1
     var hasSword = 0
     var health = 100
+    var name = "Player"
     var damage = 0
     var help = "Commands: ver, health, damage, quit, debug"
-    var version = 0.3
+    var version = 0.4
     var goblinSlain = 0
     var wizardTalk = 0
+    //var stats = ("Name: $name , Damage: $damage, Health: $health")
+    //Stats does not work as it is not updated. Apparently I can make it into a function which will solve it?
+    //var Inventory = hasSword
+    //Not occupied yet
 
     println("Welcome to Dungeon Crawler!")
 
@@ -15,9 +20,12 @@ fun main() {
         //Room 1 Logic Start
         if (room == 1) {
             if (hasSword == 0) {
-                println("You are in a small house. A door is to your left. A sword is on the ground next to you. Weird.")
-            } else {
-                println("You are in a small house. A door is to your left.")
+                println("You awaken in a small wooden house. An empty field is visible outside a window. A door is to your left. A sword is on the ground next to you.")
+            } else if (hasSword == 1) {
+                println("You awaken in a small wooden house. An empty field is visible outside a window. A door is to your left.")
+            } else if (hasSword == 1 && goblinSlain == 1) {
+                //Bug here
+                println("You are in a small wooden house. An empty field is visible outside a window. A door is to your left.")
             }
 
             print("> ") //  shows a prompt symbol
@@ -48,6 +56,9 @@ fun main() {
             } else if (result == "debug") {
                 println("Current room is $room")
 
+            /*} else if (result == "stats") {
+                println(stats)*/
+
             } else {
                 println("I don't understand.")
             }
@@ -61,13 +72,14 @@ fun main() {
             print("> ") // shows a prompt symbol
             val result: String? = readLine()?.trim()
             if (result == "Attack" && hasSword == 0) {
-                println("Your fists are worth nothing and were destroyed, along with you.")
+                println("Your fists are worth nothing. It easily overpowers you. The light begins to fade...")
                 break
-            } else if (result == "Attack" && hasSword == 1) {
+            } else if (result == "Attack" && hasSword == 1 && goblinSlain == 0) {
                 health -= 5
                 goblinSlain = 1
                 println("You slash the Goblin into pieces. Lost 5 health. Current health: $health")
-                println("You see a light in another room to the north of you. Maybe try....GOING NORTH?")
+                println("Around you is a dark humid room filled with skulls and various body parts of unknown animals.")
+                println("You see some sort of trap door on the floor.")
 
             } else if (result == "quit") {
                 break
@@ -87,10 +99,13 @@ fun main() {
             } else if (result == "debug") {
                 println("Current room is $room")
 
+            /*} else if (result == "stats") {
+                println(stats)*/
+
             } else if (result == "Go back") {
                 room = 1
 
-            } else if (result == "Go north" && goblinSlain == 1) {
+            } else if (result == "Open trap door" && goblinSlain == 1) {
                 room = 3
 
             } else {
@@ -102,18 +117,18 @@ fun main() {
         //Room 3 Logic Start
         else if (room == 3) {
             if (wizardTalk == 0) {
-                println("A grand ol Wizard rants on about hobbits and proceeds to give you an Apple. + 5 health.")
+                println("You find a wizard chained to a wall. You set him loose with your sword. He rants on about hobbits and proceeds to give you an Apple. + 5 health.")
                 println("He tells you how this game makes absolutely no sense and asks if you're on acid. You feel uncomfortable.")
+                println("You see a a corridor to the west.")
                 wizardTalk = 1
-                println("You see a path of stairs behind him. Maybe GO UP them?")
                 health += 5
             } else if (wizardTalk == 1) {
-                println("You see a path of stairs behind him. Maybe GO UP them?")
+                println("You see a a corridor to the west.")
             }
             print("> ") // shows a prompt symbol
             val result: String? = readLine()?.trim()
 
-              if (result == "Go up stairs") {
+              if (result == "Go west") {
                    room = 4
 
               } else if (result == "quit") {
@@ -142,6 +157,18 @@ fun main() {
               }
 
         } //Room 3 Logic End
+
+
+          else if (room == 4) {
+              println("You are surrounded by dark knights lined up in rows. Suddenly the begin to rattle...")
+              println("The knights surround you with swords of steel! You see a door with a chain on it to the north. Or maybe you could try fighting?")
+
+            print("> ") // shows a prompt symbol
+            val result: String? = readLine()?.trim()
+
+          }
+
+
 
 
     }
