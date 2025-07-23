@@ -5,7 +5,7 @@ fun main() {
     var health = 100
     var damage = 0
     var help = "Commands: ver, health, damage, quit, debug"
-    var version = 0.2
+    var version = 0.3
     var goblinSlain = 0
     var wizardTalk = 0
 
