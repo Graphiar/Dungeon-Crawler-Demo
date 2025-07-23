@@ -7,6 +7,7 @@ fun main() {
     var help = "Commands: ver, health, damage, quit, debug"
     var version = 0.2
     var goblinSlain = 0
+    var wizardTalk = 0
 
     println("Welcome to Dungeon Crawler!")
 
@@ -100,12 +101,47 @@ fun main() {
 
         //Room 3 Logic Start
         else if (room == 3) {
-            println("A grand ol Wizard rants on about hobbits and proceeds to give you an Apple. + 5 health.")
-            health += 5
-
+            if (wizardTalk == 0) {
+                println("A grand ol Wizard rants on about hobbits and proceeds to give you an Apple. + 5 health.")
+                println("He tells you how this game makes absolutely no sense and asks if you're on acid. You feel uncomfortable.")
+                wizardTalk = 1
+                println("You see a path of stairs behind him. Maybe GO UP them?")
+                health += 5
+            } else if (wizardTalk == 1) {
+                println("You see a path of stairs behind him. Maybe GO UP them?")
+            }
             print("> ") // shows a prompt symbol
             val result: String? = readLine()?.trim()
-        }
+
+              if (result == "Go up stairs") {
+                   room = 4
+
+              } else if (result == "quit") {
+                  break
+
+              } else if (result == "health") {
+                 println(health)
+
+              } else if (result == "ver") {
+                  println(version)
+
+              } else if (result == "damage") {
+                  println(damage)
+
+              } else if (result == "help") {
+                 println(help)
+
+              } else if (result == "debug") {
+                 println("Current room is $room")
+
+              } else if (result == "Go back") {
+                 room = 2
+
+              } else {
+                  println("I don't understand.")
+              }
+
+        } //Room 3 Logic End
 
 
     }
