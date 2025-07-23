@@ -4,7 +4,7 @@ fun main() {
 
     println("Welcome to Dungeon Crawler!")
 
-    while (room == 1) {
+    while (room == 1 || room == 2) {
         if (hasSword == 0) {
             println("You are in a small house. A door is to your left. A sword is on the ground next to you. Weird.")
         } else {
@@ -13,45 +13,30 @@ fun main() {
 
         print("> ") // shows a prompt symbol
         val result: String? = readLine()
-
-        if (result == " ") {
-            println("I don't understand.")
-        } else if (result == "Pick up sword" && hasSword == 0) {
+          if (result == "Pick up sword" && hasSword == 0) {
             hasSword = 1
             println("You picked up the sword. Shiny.")
         } else if (result == "Open door") {
             println("You step into the next room...")
-            room = 2 // this will break the loop
+            room = 2 // this will go to the next block
         } else {
             println("I don't understand.")
         }
-    }
 
-    while (room == 2)  {
-        println("You see a goblin in front of you. It looks angry.")
-
-        print("> ") // shows a prompt symbol
-        val result: String? = readLine()
-
-        if (result == "Attack" && hasSword == 0) {
-            println("You try using your fists but they're worthless. You get pummled. Thanks for playing!")
-            break
-        } else if (result == "Attack" && hasSword == 1) {
-            println("You slash with your sword until the Goblin faints into a bloody pulp. Thanks for playing!")
-            break
-        } else if (result == "Go back") {
-            room = 1
+        if (room == 2) {
+            println("You see a Goblin. It looks angry")
+            print("> ") // shows a prompt symbol
+            val result: String? = readLine()
+            if (result == "Attack" && hasSword == 0) {
+                println("Your fists are worth nothing and were destroyed, along with you.")
+                break
+            } else if (result == "Attack" && hasSword == 1) {
+                println("You slash the Goblin into pieces.")
+                break
+            } else if (result == "Go back") {
+                room = 1
+            }
         }
-
-
-
-
     }
-
-
-
-
-
-
-    println("End of demo. Thanks for playing!")
+          println("Demo ended. Thanks for playing!")
 }
