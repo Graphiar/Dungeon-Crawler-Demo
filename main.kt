@@ -31,11 +31,11 @@ fun main() {
             print("> ") //  shows a prompt symbol
             val result: String? = readLine()?.trim()?.lowercase()
 
-            if (result == "Pick up sword" && hasSword == 0) {
+            if (result == "pick up sword" && hasSword == 0) {
                 hasSword = 1
                 damage = 5
                 println("You picked up the sword. Shiny.")
-            } else if (result == "Open door") {
+            } else if (result == "open door") {
                 println("You step into the next room...")
                 room = 2 // this will go to the next block
             } else if (result == "quit") {
@@ -71,10 +71,10 @@ fun main() {
             }
             print("> ") // shows a prompt symbol
             val result: String? = readLine()?.trim()?.lowercase()
-            if (result == "Attack" && hasSword == 0) {
+            if (result == "attack" && hasSword == 0) {
                 println("Your fists are worth nothing. It easily overpowers you. The light begins to fade...")
                 break
-            } else if (result == "Attack" && hasSword == 1 && goblinSlain == 0) {
+            } else if (result == "attack" && hasSword == 1 && goblinSlain == 0) {
                 health -= 5
                 goblinSlain = 1
                 println("You slash the Goblin into pieces. Lost 5 health. Current health: $health")
@@ -102,10 +102,10 @@ fun main() {
             /*} else if (result == "stats") {
                 println(stats)*/
 
-            } else if (result == "Go back") {
+            } else if (result == "go back") {
                 room = 1
 
-            } else if (result == "Open trap door" && goblinSlain == 1) {
+            } else if (result == "open trap door" && goblinSlain == 1) {
                 room = 3
 
             } else {
@@ -128,7 +128,7 @@ fun main() {
             print("> ") // shows a prompt symbol
             val result: String? = readLine()?.trim()?.lowercase()
 
-              if (result == "Go west") {
+              if (result == "go west") {
                    room = 4
 
               } else if (result == "quit") {
@@ -149,7 +149,7 @@ fun main() {
               } else if (result == "debug") {
                  println("Current room is $room")
 
-              } else if (result == "Go back") {
+              } else if (result == "go back") {
                  room = 2
 
               } else {
@@ -166,10 +166,10 @@ fun main() {
             print("> ") // shows a prompt symbol
             val result: String? = readLine()?.trim()?.lowercase()
 
-            if (result == "Attack") {
-                println("Your blade ricochets off of the armor. The knight surround you, slashing your limbs until you bleed out. ")
+            if (result == "attack") {
+                println("Your blade ricochets off of the armor. The knights surround you, slashing your limbs until you bleed out. Game over.")
                 break
-            } else if (result == "Go north") {
+            } else if (result == "go north") {
                 room = 5
                 println("You sprint towards the door as the knights follow. The chain looks weak. You might be able to cut it.")
 
@@ -191,7 +191,7 @@ fun main() {
             } else if (result == "debug") {
                 println("Current room is $room")
 
-            } else if (result == "Go back") {
+            } else if (result == "go back") {
                 room = 3
 
             } else {
@@ -207,7 +207,7 @@ fun main() {
             print("> ") // shows a prompt symbol
             val result: String? = readLine()?.trim()?.lowercase()
 
-            if (result == "Attack chain") {
+            if (result == "attack chain") {
                 println("You cut the chain with your trusty sword and walk through the door. A narrow escape. You see something...")
                 break
 
